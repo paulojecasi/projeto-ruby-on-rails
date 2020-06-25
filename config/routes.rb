@@ -1,0 +1,25 @@
+Rails.application.routes.draw do
+  namespace :site do
+    get 'welcome/index'
+  end
+  namespace :users_backoffice do
+    get 'welcome/index'
+  end
+  namespace :admins_backoffice do
+    get 'welcome/index'  #Dashboard 
+    resources :admins  #, only: [:index, :edit, :update, :new, :create, :destroy ]  # controle administradores
+    resources :subjects
+    resources :questions # 
+    # no RESOURCES, so nao vamos querer o DELETE, poderiamos fazer tambem como esta abaixo: PJCS
+    # resources :admins, except: [:destroy ]
+
+  end
+
+  devise_for :admins
+  devise_for :users 
+
+  get 'inicio', to: 'site/welcome#index'
+
+  root to: 'site/welcome#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end

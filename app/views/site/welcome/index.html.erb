@@ -1,0 +1,33 @@
+<h1>Site::Welcome#index  SITE - JECASI </h1>
+<p>Find me in app/views/site/welcome/index.html.erb</p>
+
+<% if user_signed_in? %>
+
+	<p> Usuario ESTÁ logado / <%= current_user.email %>  </p>
+	
+<% else %>
+
+    <p> Usuario NÃO ESTÁ logado </p>
+
+<% end %> 
+
+
+<% if admin_signed_in? %>
+
+	<p> Administador ESTÁ logado / <%= current_admin.email %> </p>
+	
+<% else %>
+
+    <p> Administrador NÃO ESTÁ logado </p>
+
+<% end %> 
+
+<h1>
+  <%= link_to ' Usuario       ', users_backoffice_welcome_index_path %>
+</h1>
+
+<h1>
+  <%=  link_to ' Administração ', admins_backoffice_welcome_index_path %>
+</h1>
+
+
